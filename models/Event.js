@@ -35,6 +35,10 @@ const EventSchema = new Schema({
       }
     }
   ],
+  date: {
+    type: Date,
+    default: Date.now()
+  },
   comments: [
     {
       user: {
@@ -48,7 +52,13 @@ const EventSchema = new Schema({
       name: {
         type: String,
         required: true
+      },
+      date: {
+        type: Date,
+        default: Date.now()
       }
     }
   ]
 });
+
+module.exports = event = mongoose.model('event', EventSchema);
