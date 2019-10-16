@@ -9,7 +9,6 @@ const EventSchema = new Schema({
   },
   name: {
     type: String,
-    required: true
   },
   start: {
     type: Date,
@@ -51,7 +50,6 @@ const EventSchema = new Schema({
       },
       name: {
         type: String,
-        required: true
       },
       date: {
         type: Date,
