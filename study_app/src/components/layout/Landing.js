@@ -31,10 +31,11 @@ class Landing extends Component {
           Create and/or find study groups with fellow GGC students
         </p>
         <hr />
-        <Link to="/register" className="btn btn-lg btn-success mr-2">
+        <Link to="/register" className="btn btn-lg btn-success btn-block"  style={{maxWidth: '50%', margin: 'auto'}}>
           Sign Up
         </Link>
-        <Link to="/login" className="btn btn-lg btn-light">
+        <br/>
+        <Link to="/login" className="btn btn-lg btn-light btn-block"  style={{maxWidth: '50%', margin: 'auto'}}>
           Login
         </Link>
       </React.Fragment>

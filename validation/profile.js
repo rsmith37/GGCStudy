@@ -9,17 +9,17 @@ module.exports = function validateProfileInput(data) {
   data.year = !isEmpty(data.year) ? data.year : '';
 
   if (!Validator.isLength(data.handle, { min: 2, max: 40 })) {
-    errors.handle = 'Handle must be 2 to 40 characters'
+    errors.handle = 'Username must be 2 to 40 characters'
   }
 
   if (Validator.isEmpty(data.handle)) {
-    errors.handle = 'Handle field is required';
+    errors.handle = 'Username field is required';
   }
   if (Validator.isEmpty(data.major)) {
-    errors.major = 'Handle field is required';
+    errors.major = 'Major field is required';
   }
   if (Validator.isEmpty(data.year)) {
-    errors.year = 'Handle field is required';
+    errors.year = 'Year field is required';
   }
 
   return {
