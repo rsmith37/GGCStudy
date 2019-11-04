@@ -19,7 +19,7 @@ class Navbar extends Component {
       <React.Fragment>
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link className="nav-link" to="/events">
+            <Link className="nav-link" to="/groups">
               {' '}
               Study Groups
             </Link>

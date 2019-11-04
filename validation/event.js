@@ -8,7 +8,7 @@ module.exports = function validateEventInput(data) {
   data.end = !isEmpty(data.end) ? data.end : '';
   data.subject = !isEmpty(data.subject) ? data.subject : '';
   data.title = !isEmpty(data.title) ? data.title : '';
-  data.text = !isEmpty(data.text) ? data.text : '';
+  // data.text = !isEmpty(data.text) ? data.text : '';
 
   if (Validator.isEmpty(data.start)) {
     errors.start = 'Starting date and time is required';
@@ -22,9 +22,9 @@ module.exports = function validateEventInput(data) {
   if (Validator.isEmpty(data.title)) {
     errors.title = 'Title is required';
   }
-  if (Validator.isEmpty(data.text)) {
-    errors.text = 'Comment text is required';
-  }
+  // if (Validator.isEmpty(data.text)) {
+  //   errors.text = 'Comment text is required';
+  // }
 
   return {
     errors,

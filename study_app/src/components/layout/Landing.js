@@ -19,7 +19,7 @@ class Landing extends Component {
           {' '}
           Welcome, {user.name}! 
           <br/>
-          Go to <Link to="/events">Study Groups</Link> to connect with fellow students
+          Go to <Link to="/groups">Study Groups</Link> to connect with fellow students
         </p>
       </React.Fragment>
     )

@@ -19,6 +19,8 @@ import Login from './components/auth/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/create-profile/CreateProfile';
 import EditProfile from './components/edit-profile/EditProfile';
+import StudyGroup from './components/study-groups/StudyGroup';
+import CreateGroup from './components/study-groups/CreateGroup';
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -33,8 +35,8 @@ if (localStorage.jwtToken) {
   const currentTime = Date.now() / 1000;
   if (decoded.exp < currentTime) {
     // Logout user
-    store.dispatch(logoutUser);
-    store.dispatch(clearCurrentProfile);
+    store.dispatch(logoutUser());
+    store.dispatch(clearCurrentProfile());
     // Redirect to login
     window.location.href = '/login';
   }
@@ -59,6 +61,12 @@ export default class App extends Component {
               </Switch>
               <Switch>
                 <PrivateRoute exact path="/edit-profile" component={ EditProfile } />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/groups" component={ StudyGroup } />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/create-group" component={ CreateGroup } />
               </Switch>
             </div>
             <Footer />

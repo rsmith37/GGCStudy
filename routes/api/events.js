@@ -39,8 +39,8 @@ router.get('/date', passport.authenticate('jwt', { session: false }), (req, res)
     .catch(err => res.status(404).json(err));
 })
 
-// @route   GET api/events/date
-// @desc    Get events by date
+// @route   GET api/events/all
+// @desc    Get all events
 // @access  Public
 router.get('/all', passport.authenticate('jwt', { session: false }), (req, res) => {
   Event
