@@ -21,6 +21,8 @@ import CreateProfile from './components/create-profile/CreateProfile';
 import EditProfile from './components/edit-profile/EditProfile';
 import StudyGroup from './components/study-groups/StudyGroup';
 import CreateGroup from './components/study-groups/CreateGroup';
+import Group from './components/study-groups/Group';
+import BrowseGroups from './components/study-groups/BrowseGroups';
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -63,10 +65,16 @@ export default class App extends Component {
                 <PrivateRoute exact path="/edit-profile" component={ EditProfile } />
               </Switch>
               <Switch>
-                <PrivateRoute exact path="/groups" component={ StudyGroup } />
+                <PrivateRoute exact path="/groups/home" component={ StudyGroup } />
               </Switch>
               <Switch>
-                <PrivateRoute exact path="/create-group" component={ CreateGroup } />
+                <PrivateRoute exact path="/groups/create" component={ CreateGroup } />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/groups/id/:id" component={ Group } />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/groups/search" component={ BrowseGroups } />
               </Switch>
             </div>
             <Footer />

@@ -13,14 +13,17 @@ moment.locale("en");
 const localizer = momentLocalizer(moment);
 
 class EventCalendar extends Component {
-  
+  constructor(props) {
+    super(props)
+    this.onSelectEvent = this.onSelectEvent.bind(this)
+  }
+
   componentDidMount() {
     this.props.getEvents();
   }
 
   onSelectEvent(e) {
-    this.props.history.push(`/events/${e.id}`);
-
+    this.props.history.push(`/groups/id/${e.id}`);
   }
 
   render() {
@@ -48,7 +51,7 @@ class EventCalendar extends Component {
             startAccessor="start"
             endAccessor="end"
             titleAccessor="title"
-            onSelectEvent={this.onSelectEvent.bind(this)}
+            onSelectEvent={this.onSelectEvent}
           />
         }
       </div>

@@ -21,13 +21,27 @@ const Profile = require('../../models/Profile');
 // @access  Public
 router.get('/test', (req, res) => res.json({msg: "Events Works"}));
 
-// @route   GET api/events/date
-// @desc    Get events by date
+// @route   POST api/events/search
+// @desc    Get events by criteria
 // @access  Public
-router.get('/date', passport.authenticate('jwt', { session: false }), (req, res) => {
-  Event
+router.post('/search', passport.authenticate('jwt', { session: false }), (req, res) => {
+  if (req.body.start === '') {
+    Event
     .find()
     .sort({start: 1 })
+    .where('subject').regex('.*' + req.body.subject + '.*')
+    .then(event => {
+      if (!event || event.length == 0) {
+        return res.status(404).json({events: "There are no events for this start date"});
+      }
+      res.json(event);
+    })
+    .catch(err => res.status(404).json(err));
+  } else {
+    Event
+    .find()
+    .sort({start: 1 })
+    .where('subject').regex('.*' + req.body.subject + '.*')
     .where('start').gte(moment(req.body.start).startOf('day').toDate())
     .where('start').lte(moment(req.body.start).endOf('day').toDate())
     .then(event => {
@@ -37,6 +51,7 @@ router.get('/date', passport.authenticate('jwt', { session: false }), (req, res)
       res.json(event);
     })
     .catch(err => res.status(404).json(err));
+  }
 })
 
 // @route   GET api/events/all
