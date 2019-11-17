@@ -16,7 +16,7 @@ export const getCurrentProfile = () => dispatch => {
     .catch(err => 
       dispatch({
         type: GET_PROFILE,
-        payload: {}
+        payload: null
       })
     )
 }
@@ -59,6 +59,44 @@ export const deleteAccount = () => dispatch => {
     // Remove auth header for future requests
     setAuthToken(false);
   }
+}
+
+// Get profile by username
+export const getProfileByUsername = handle => dispatch => {
+  dispatch(setProfileLoading());
+  axios
+    .get(`/api/profile/handle/${handle}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })  
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: null
+      })
+    )
+}
+
+// Get profile by user id
+export const getProfileByUserID = user => dispatch => {
+  dispatch(setProfileLoading());
+  axios
+    .get(`/api/profile/user/${user}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })  
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: null
+      })
+    )
 }
 
 // Set profile loading

@@ -23,6 +23,8 @@ import StudyGroup from './components/study-groups/StudyGroup';
 import CreateGroup from './components/study-groups/CreateGroup';
 import Group from './components/study-groups/Group';
 import BrowseGroups from './components/study-groups/BrowseGroups';
+import Profile from './components/profile/Profile';
+import NotFound from './components/common/NotFound';
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -51,30 +53,37 @@ export default class App extends Component {
         <Router>
           <div className="App">
             <Navbar />
-            <Route exact path="/" component={ Landing } />
-            <div className="container">
-              <Route exact path="/register" component={ Register } />
-              <Route exact path="/login" component={ Login } />
+            <div style={{minHeight: '81vh'}}>
               <Switch>
-                <PrivateRoute exact path="/dashboard" component={ Dashboard } />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/create-profile" component={ CreateProfile } />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/edit-profile" component={ EditProfile } />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/groups/home" component={ StudyGroup } />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/groups/create" component={ CreateGroup } />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/groups/id/:id" component={ Group } />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/groups/search" component={ BrowseGroups } />
+                <Route exact path="/" component={ Landing } />
+                <Route exact path="/register" component={ Register } />
+                <Route exact path="/login" component={ Login } />
+                {/* <Switch> */}
+                  <PrivateRoute exact path="/dashboard" component={ Dashboard } />
+                {/* </Switch> */}
+                {/* <Switch> */}
+                  <PrivateRoute exact path="/create-profile" component={ CreateProfile } />
+                {/* </Switch> */}
+                {/* <Switch> */}
+                  <PrivateRoute exact path="/edit-profile" component={ EditProfile } />
+                {/* </Switch> */}
+                {/* <Switch> */}
+                  <PrivateRoute exact path="/groups/home" component={ StudyGroup } />
+                {/* </Switch> */}
+                {/* <Switch> */}
+                  <PrivateRoute exact path="/groups/create" component={ CreateGroup } />
+                {/* </Switch> */}
+                {/* <Switch> */}
+                  <PrivateRoute exact path="/groups/id/:id" component={ Group } />
+                {/* </Switch> */}
+                {/* <Switch> */}
+                  <PrivateRoute exact path="/groups/search" component={ BrowseGroups } />
+                {/* </Switch> */}
+                {/* <Switch> */}
+                  <PrivateRoute exact path="/profile/handle/:handle" component={ Profile } />
+                  <PrivateRoute exact path="/profile/user/:user" component={ Profile } />
+                {/* </Switch> */}
+                <Route component={ NotFound } />
               </Switch>
             </div>
             <Footer />

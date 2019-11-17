@@ -26,11 +26,15 @@ const EventSchema = new Schema({
     type: String,
     required: true
   },
+  location: {
+    type: String,
+    required: true
+  },
   attendees: [
     {
       user: {
         type: Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'users'
       }
     }
   ],

@@ -80,6 +80,32 @@ export const getEventById = id => dispatch => {
     )  
 }
 
+// Attend meeting
+export const attendMeeting = id => dispatch => {
+  axios
+    .post(`/api/events/attend/${id}`)
+    .then(res => dispatch(getEventById(id)))
+    .catch(err => 
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })  
+    )
+}
+
+// Undattend meeting
+export const unattendMeeting = id => dispatch => {
+  axios
+    .post(`/api/events/unattend/${id}`)
+    .then(res => dispatch(getEventById(id)))
+    .catch(err => 
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })  
+    )
+}
+
 // Set event loading
 export const setEventLoading = () => {
   return {

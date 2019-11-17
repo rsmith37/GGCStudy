@@ -15,6 +15,7 @@ class CreateGroup extends Component {
       end: '',
       subject: '',
       title: '',
+      location: '',
       errors: {}
     }
 
@@ -42,6 +43,7 @@ class CreateGroup extends Component {
       end: this.state.end,
       subject: this.state.subject,
       title: this.state.title,
+      location: this.state.location,
       name: user.name
       // attendees: [user]
     }
@@ -157,6 +159,14 @@ class CreateGroup extends Component {
                   options={subjectOptions}
                   error={errors.subject}
                   info="Course subject for the meeting"
+                />
+                <TextFieldGroup 
+                  placeholder="* Meeting location"
+                  name="location"
+                  value={this.state.location}
+                  onChange={this.onChange}
+                  error={errors.location}
+                  info="The location of the meeting"
                 />
                 <input type="submit" value="Submit" className="btn btn-success btn-block mt-4"/>
               </form>

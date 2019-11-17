@@ -76,6 +76,7 @@ router.get('/all', passport.authenticate('jwt', { session: false }), (req, res) 
 router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
   Event
     .findById(req.params.id)
+    .populate('attendees.user', 'name')
     .then(event => {
       if (!event || event.length == 0) {
         return res.status(404).json({events: "There are no events for this id"});
@@ -103,10 +104,18 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
     start: req.body.start,
     end: req.body.end,
     subject: req.body.subject,
-    title: req.body.title
+    title: req.body.title,
+    location: req.body.location
   });
 
-  newEvent.save().then(event => res.json(event));
+  newEvent.save().then(outerEvent => {
+    Event.findById(outerEvent._id)
+      .then(innerEvent => {
+        innerEvent.attendees.push({user: req.user.id})
+
+        innerEvent.save().then(innerEvent => res.json(innerEvent))
+      })
+  });
 })
 
 // @route   DELETE api/events/:id

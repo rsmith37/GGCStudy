@@ -21,15 +21,15 @@ class Dashboard extends Component {
 
     let dashboardContent;
 
-    if (profile === null || loading) {
+    if (loading) {
       dashboardContent = <Spinner/>
     } else {
       // Check if logged in user has current profile data
-      if (Object.keys(profile).length > 0) {
+      if (profile != null) {
         // Something is in this object aka they have a current profile
         dashboardContent = (
           <div>
-            <p className="lead text-muted">Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link></p>
+            <p className="lead text-muted">Welcome <Link to={`/profile/handle/${profile.handle}`}>{user.name}</Link></p>
             <ProfileActions />
             <div style={{ marginBottom: '60px' }}></div>
             <button onClick={this.onDeleteClick.bind(this)} className="btn btn-danger">Delete Account</button>

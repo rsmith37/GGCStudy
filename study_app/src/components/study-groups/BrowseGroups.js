@@ -4,7 +4,7 @@ import Results from './Results';
 
 const BrowseGroups = () => {
   return (
-    <div>
+    <div className="container"> 
       <Search />
       <hr/>
       <Results />
