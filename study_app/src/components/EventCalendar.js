@@ -42,7 +42,7 @@ class EventCalendar extends Component {
     }
 
     return (
-      <div style={{ height: '90vh' }}>
+      <div className="container" style={{ height: '90vh' }}>
         {eventLoading ? <Spinner /> :
           <Calendar
             selectable

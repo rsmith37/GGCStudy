@@ -6,7 +6,7 @@ import EventCalendar from '../EventCalendar';
 class StudyGroup extends Component {
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container">
         <GroupActions />
         <hr/>
         <EventCalendar />
